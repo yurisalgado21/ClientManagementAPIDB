@@ -1,10 +1,12 @@
 using ClientManagementAPIDB.Data;
 using ClientManagementAPIDB.Models;
 using ClientManagementAPIDB.Repository;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ClientValidator>());
 builder.Services.AddDbContext<ApplicationDBContext>();
 builder.Services.AddScoped<IApplicationDBContext, ApplicationDBContext>();
 builder.Services.AddScoped<IRepositoryBase<Client>, RepositoryBase<Client>>();
