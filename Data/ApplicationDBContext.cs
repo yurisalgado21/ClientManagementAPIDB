@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClientManagementAPIDB.Data
 {
-    public class ApplicationContext : DbContext, IApplicationContext
+    public class ApplicationDBContext : DbContext, IApplicationDBContext
     {
         public DbSet<Client> Clients { get; set; }
 
-        public ApplicationContext(DbContextOptions options) : base(options)
+        public ApplicationDBContext(DbContextOptions options) : base(options)
         {
             
         }
