@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ClientManagementAPIDB.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +29,11 @@ namespace ClientManagementAPIDB.Repository
         public IEnumerable<TEntity> GetAll()
         {
             return DbSetEntity.ToList();
+        }
+
+        public TEntity GetById(int id)
+        {
+            return DbSetEntity.Find(id);
         }
 
         public void Update(TEntity entity)
