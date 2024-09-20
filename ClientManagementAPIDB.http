@@ -1,0 +1,6 @@
+@ClientManagementAPIDB_HostAddress = http://localhost:5231
+
+GET {{ClientManagementAPIDB_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
