@@ -31,18 +31,18 @@ namespace ClientManagementAPIDB.Controller
         public IActionResult Add([FromBody] Client client)
         {
             _repository.Add(client);
-            return Ok();
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return CreatedAtAction(nameof(GetById), new { id = client.ClientId }, client);
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Client client)
         {
-            var clientExist = _repository.GetById(id);
-            if(clientExist == null)
-            {
-                return NotFound("Cliente não econtrado!");
-            }
-
             client.ClientId = id;
             _repository.Update(client);
             return NoContent();
