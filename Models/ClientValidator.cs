@@ -8,11 +8,13 @@ namespace ClientManagementAPIDB.Models
         public ClientValidator()
         {
             RuleFor(client => client.Name)
-            .NotEmpty().WithMessage("O nome do cliente é obrigatório")
+            .NotNull().WithMessage("O nome do cliente é obrigatório")
+            .NotEmpty().WithMessage("O nome do cliente não pode ser vazio")
             .MaximumLength(100).WithMessage("O nome do cliente deve ter no máximo 100 caracteres");
 
             RuleFor(client => client.Email)
-            .NotEmpty().WithMessage("O email do cliente é obrigatório")
+            .NotNull().WithMessage("O email do cliente é obrigatório")
+            .NotEmpty().WithMessage("O email do cliente não pode ser vazio")
             .EmailAddress().WithMessage("O email do cliente é inválido");
 
             RuleFor(client => client.IsActive)
